@@ -5,5 +5,5 @@ public class Veterinarian extends People{
         super(name, location);
     }
     public void heal(){}
-    public void lectuer(){}
+    public void lecture(){}
 }

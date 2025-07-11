@@ -28,7 +28,5 @@ public class People {
     }
 
     public void goTo(String newLocation){
-        this.location = newLocation;
-        System.out.println(name + " is going to " + newLocation);
     }
 }
