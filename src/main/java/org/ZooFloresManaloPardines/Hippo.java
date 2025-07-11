@@ -1,0 +1,12 @@
+package org.ZooFloresManaloPardines;
+
+public class Hippo extends Pachyderm{
+    Hippo(String name, Building location){
+        this.name = name;
+        this.location = location;
+    }
+    @Override
+    public void makeSound() {
+        System.out.println("Hippo sound.");
+    }
+}
