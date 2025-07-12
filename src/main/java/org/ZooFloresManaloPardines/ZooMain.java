@@ -2,7 +2,7 @@ package org.ZooFloresManaloPardines;
 
 import java.util.Scanner;
 
-public class ZooModule {
+public class ZooMain {
     public static void main(String[] args) {
         Zoo zoo = SharedZoo.zoo;
         boolean exitCondition = false;
