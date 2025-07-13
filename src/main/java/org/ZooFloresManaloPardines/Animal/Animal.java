@@ -11,6 +11,9 @@ public abstract class Animal {
         this.isHealthy = true;
     }
     public abstract void setLocation(Building location);
+    public boolean isHealthy(){
+        return this.isHealthy;
+    }
     public void eat(){
         System.out.println(name + " is eating.");
     };

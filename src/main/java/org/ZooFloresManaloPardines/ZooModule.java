@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -29,21 +30,14 @@ public class ZooModule {
         //init representative animals from the zooData object
         if(zooData.pachydermEnclosure != null && !zooData.pachydermEnclosure.getAnimals().isEmpty()){
             this.representativePachyderm = zooData.pachydermEnclosure.getAnimals().getFirst();
-        }else{
-            this.representativePachyderm = zooData.pachydermEnclosure.getAnimals().getLast();
         }
 
         if(zooData.felineEnclosure != null && !zooData.felineEnclosure.getAnimals().isEmpty()){
             this.representativeFeline = zooData.felineEnclosure.getAnimals().getFirst();
-        }else{
-            this.representativeFeline = zooData.felineEnclosure.getAnimals().getLast();
         }
-
 
         if(zooData.birdEnclosure != null && !zooData.birdEnclosure.getAnimals().isEmpty()){
             this.representativeBird = zooData.birdEnclosure.getAnimals().getFirst();
-        }else{
-            this.representativeBird = zooData.birdEnclosure.getAnimals().getLast();
         }
     }
 
@@ -105,15 +99,31 @@ public class ZooModule {
         System.out.print("Choose an option: ");
 
         int choice = getUserChoice();
-        Animal animalToInteract = null;
+        Enclosure selectedEnclosure = null;
 
-        if(choice==1){
-            animalToInteract = representativePachyderm;
-        }else if(choice==2){
-            animalToInteract = representativeFeline;
-        }else if(choice==3){
-            animalToInteract = representativeBird;
+        if(choice == 1){
+            selectedEnclosure = zooData.pachydermEnclosure;
+        }else if(choice == 2){
+            selectedEnclosure = zooData.felineEnclosure;
+        }else if(choice == 3){
+            selectedEnclosure = zooData.birdEnclosure;
+        } else{
+            System.out.println("Invalid input. Select from 1-3.");
+            System.out.println("What would you like to do next?");
+            System.out.print("Choose an option: ");
+            return;
         }
+
+        Animal animalToInteract = null;
+        if (selectedEnclosure != null && !selectedEnclosure.getAnimals().isEmpty()) {
+            // Find the first healthy animal in the selected enclosure
+            Optional<Animal> availableAnimal = selectedEnclosure.getAnimals().stream().filter(Animal::isHealthy).findFirst();
+                    //.filter(Animal::isHealthy) // Filter for healthy animals
+            if (availableAnimal.isPresent()) {
+                animalToInteract = availableAnimal.get();
+            }
+        }
+
         if(animalToInteract != null){
             System.out.print("Would you like to feed " + animalToInteract.name + "? (yes/no): ");
             String feedResponse = sc.nextLine();
@@ -121,11 +131,13 @@ public class ZooModule {
                 animalToInteract.eat();
                 animalToInteract.makeSound();
             }else if(feedResponse.equalsIgnoreCase("no")){
-                System.out.println(animalToInteract.name + " despises you for not feeding it.");
+                System.out.println(animalToInteract.name + " is not hungry right now.");
             }else{
-                System.out.println("Invalid input.");
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
             }
-            System.out.println("What would you like to do next?");
+        } else {
+            // If no interactable animal found after dynamic selection
+            System.out.println("There is no interactable (healthy) animal in this enclosure right now.");
         }
     }
     private void visitShop() {

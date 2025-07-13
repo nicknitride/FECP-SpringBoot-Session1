@@ -52,6 +52,9 @@ public class Zoo {
         Elephant dumbo = new Elephant("Dumbo", pachydermEnclosure);
         Rhino rhinoMan = new Rhino("Rhino Man", pachydermEnclosure);
         Hippo harry = new Hippo("Harry", pachydermEnclosure);
+        pachydermEnclosure.addAnimal(dumbo);
+        pachydermEnclosure.addAnimal(rhinoMan);
+        pachydermEnclosure.addAnimal(harry);
         animals.add(dumbo);
         animals.add(rhinoMan);
         animals.add(harry);
@@ -59,6 +62,9 @@ public class Zoo {
         Lion simba = new Lion("Simba", felineEnclosure);
         Tiger tigger = new Tiger("Tigger", felineEnclosure);
         Cheetah cheetah = new Cheetah("Cheetah", felineEnclosure);
+        felineEnclosure.addAnimal(simba); // FIX: Add to enclosure
+        felineEnclosure.addAnimal(tigger); // FIX: Add to enclosure
+        felineEnclosure.addAnimal(cheetah); // FIX: Add to enclosure
         animals.add(simba);
         animals.add(tigger);
         animals.add(cheetah);
@@ -66,6 +72,9 @@ public class Zoo {
         Owl hedwig = new Owl("Hedwig", birdEnclosure);
         Parrot parrotMan = new Parrot("Parrot Man", birdEnclosure);
         Falcon marvinBeak = new Falcon("Flyer", birdEnclosure);
+        birdEnclosure.addAnimal(hedwig); // FIX: Add to enclosure
+        birdEnclosure.addAnimal(parrotMan); // FIX: Add to enclosure
+        birdEnclosure.addAnimal(marvinBeak); // FIX: Add to enclosure
         animals.add(hedwig);
         animals.add(parrotMan);
         animals.add(marvinBeak);
