@@ -7,7 +7,8 @@ public class Handler extends People {
     public Handler(String name, Building location) {
         super(name, location);
     }
-    public void feed(){}
+    public void feed(){
+    }
     public void exercise(){}
     public void examine(){}
 }

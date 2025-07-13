@@ -4,13 +4,13 @@ package org.ZooFloresManaloPardines;
 import org.ZooFloresManaloPardines.Animal.Animal;
 import org.ZooFloresManaloPardines.Building.*;
 import org.ZooFloresManaloPardines.Building.Tickets;
+import org.ZooFloresManaloPardines.People.Handler;
 import org.ZooFloresManaloPardines.People.Manager;
 import org.ZooFloresManaloPardines.People.People;
 
 import java.util.ArrayList;
 
 public class Zoo {
-    private ArrayList<Building> buildings;
     private ArrayList<People> people;
     private ArrayList<Animal> animals;
 
@@ -19,13 +19,23 @@ public class Zoo {
     private String userTicket;
     private ArrayList<String> ticketInfoArray; //Order: ticket type, price, HolderName
     private Manager admin;
-
+    private ArrayList<Handler> handlerArrayList = new ArrayList<>();
+    public Building pachydermEnclosure;
+    public Building felineEnclosure;
+    public Building birdEnclosure;
+    public Building hospitalBuilding;
+    public Building giftShop,ticketBooth,restaurant;
     public Zoo(){
-        this.buildings = new ArrayList<>();
         this.people = new ArrayList<>();
         this.animals = new ArrayList<>();
-        this.buildings.add(new Tickets());
         this.admin = new Manager("Nick", new Drinks(),"admin123");
+        pachydermEnclosure =  new PachydermEnclosure();
+        felineEnclosure =   new FelineEnclosure();
+        birdEnclosure = new BirdEnclosure();
+        hospitalBuilding = new Hospital();
+        giftShop = new Gifts();
+        ticketBooth = new Tickets();
+        restaurant = new Food();
     }
 
     public boolean getVisitorLoggedIn(){
@@ -51,5 +61,8 @@ public class Zoo {
 
     public Manager getAdminObject(){
         return this.admin;
+    }
+    public void addHandlerToZoo(Handler handler){
+        handlerArrayList.add(handler);
     }
 }

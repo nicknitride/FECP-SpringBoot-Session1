@@ -1,6 +1,8 @@
 package org.ZooFloresManaloPardines;
 
 
+import org.ZooFloresManaloPardines.Building.PachydermEnclosure;
+import org.ZooFloresManaloPardines.People.Handler;
 import org.ZooFloresManaloPardines.People.Manager;
 
 import java.util.Scanner;
@@ -30,6 +32,33 @@ public class ZooAdmin {
         System.out.println("5. Exit");
     }
 
+    public static void zooStaffSetup(Scanner sc, Zoo zoo){
+        String handlerName;
+        System.out.println("=== Zoo Staff Setup Menu ===");
+        System.out.printf("Welcome, Manager (%s)\n",zoo.getAdminObject().getName());
+        System.out.print("Enter Pachyderm Enclosure Handler's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.pachydermEnclosure));
+        System.out.print("Enter Feline Enclosure Handler's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.felineEnclosure));
+        System.out.print("Enter Bird Enclosure Handler's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.birdEnclosure));
+        System.out.print("Enter Veterinarian's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.hospitalBuilding));
+        System.out.print("Enter Vendor for Ticket Shop's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.ticketBooth));
+        System.out.print("Enter Food Vendor's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.restaurant));
+        System.out.print("Enter Vendor for Gift Shop's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.giftShop));
+        System.out.println("=== ✅ Completed Zoo Staff Setup ===");
+    }
     public static void main(String[] args) {
         boolean exitCondition = false;
         Zoo zoo = SharedZoo.zoo;
@@ -48,7 +77,7 @@ public class ZooAdmin {
                 String uChoice = userInput.nextLine();
                 switch(uChoice){
                     case "1":
-                        System.out.println("Add Zoo Staff Menu Here");
+                        zooStaffSetup(userInput,zoo);
                         break;
                     case "2":
                         System.out.println("Add Handler Module here");
