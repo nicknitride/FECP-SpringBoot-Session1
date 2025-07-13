@@ -16,10 +16,11 @@ public class Manager extends People {
         System.out.println("Manager is closing zoo.");
     }
     public void openZoo(){
+        isZooOpen = true;
         System.out.println("Manager has opened zoo.");
     }
     public boolean getZooOpenStatus(){
-        System.out.print("Zoo open is set to: \n"+isZooOpen);
+//        System.out.print("Zoo open is set to: \n"+isZooOpen);
         return isZooOpen;
     }
 }

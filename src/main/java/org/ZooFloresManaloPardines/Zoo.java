@@ -13,12 +13,12 @@ public class Zoo {
     private ArrayList<Building> buildings;
     private ArrayList<People> people;
     private ArrayList<Animal> animals;
-    private People admin;
 
     //TicketingModule Shared Data
     private boolean visitorLoggedIn = false;
     private String userTicket;
     private ArrayList<String> ticketInfoArray; //Order: ticket type, price, HolderName
+    private Manager admin;
 
     public Zoo(){
         this.buildings = new ArrayList<>();
@@ -47,5 +47,9 @@ public class Zoo {
     }
     public String getUserTicket(){
         return userTicket;
+    }
+
+    public Manager getAdminObject(){
+        return this.admin;
     }
 }
