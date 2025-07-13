@@ -15,7 +15,6 @@ public class Zoo {
     private ArrayList<Animal> animals;
     private People admin;
 
-
     //TicketingModule Shared Data
     private boolean visitorLoggedIn = false;
     private String userTicket;
@@ -26,7 +25,7 @@ public class Zoo {
         this.people = new ArrayList<>();
         this.animals = new ArrayList<>();
         this.buildings.add(new Tickets());
-        this.admin = new People("Admin", buildings.getFirst());
+        this.admin = new Manager("Nick", new Drinks(),"admin123");
     }
 
     public boolean getVisitorLoggedIn(){

@@ -2,11 +2,14 @@ package org.ZooFloresManaloPardines.People;
 
 import org.ZooFloresManaloPardines.People.People;
 import org.ZooFloresManaloPardines.Building.*;
+import org.ZooFloresManaloPardines.ZooAdmin;
 
 public class Manager extends People {
     private boolean isZooOpen;
-    public Manager(String name, Building location){
+    public Manager(String name, Building location,String password){
         super(name, location);
+        ZooAdmin.setUserName(name);
+        ZooAdmin.setPassword(password);
     }
     public void closeZoo(){
         isZooOpen = false;
