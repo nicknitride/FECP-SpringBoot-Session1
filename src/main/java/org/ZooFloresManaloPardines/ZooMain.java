@@ -25,10 +25,13 @@ public class ZooMain {
                 System.out.println("Sorry, zoo is still closed.");
             }
             System.out.println("Enter any key to continue or (q) to quit.");
-            System.out.print("Enter an option (any or q): ");
+            System.out.print("Enter an option (zoo to enter zoo or q): ");
             userChoice = userIn.nextLine();
             if(userChoice.toLowerCase().equals("q")){
                 exitCondition=true;
+            } else if(userChoice.toLowerCase().equals("zoo")){
+                ZooModule zooStart = new ZooModule(zoo);
+                zooStart.startZooModule();
             }
         }
 
