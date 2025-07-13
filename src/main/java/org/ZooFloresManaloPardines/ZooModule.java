@@ -36,6 +36,7 @@ public class ZooModule {
     }
 
     public void startZooModule(){
+        Zoo zoo = SharedZoo.zoo;
         System.out.println("Welcome to the Zoo!");
         boolean inZoo = true;
         while (inZoo) {
@@ -55,6 +56,7 @@ public class ZooModule {
                 case 4:
                     System.out.println("Thank you for visiting!");
                     inZoo = false;
+                    zoo.getAdminObject().closeZoo();
                     break;
                 default:
                     System.out.println("Invalid choice. Enter a number from 1-4");
@@ -132,7 +134,6 @@ public class ZooModule {
             }
             System.out.println("0. To proceed to checkout/exit.");
             System.out.print("Enter the numbers of the items you want to buy: ");
-
 
             int choice = getUserChoice();
             if(choice==0){

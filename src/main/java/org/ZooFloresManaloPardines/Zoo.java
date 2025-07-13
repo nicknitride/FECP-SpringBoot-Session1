@@ -99,7 +99,9 @@ public class Zoo {
     public void addHandlerToZoo(Handler handler){
         handlerArrayList.add(handler);
     }
-
+    public ArrayList<Handler> getHandlerArrayList(){
+        return handlerArrayList;
+    }
     public ArrayList<Animal> getAnimalsAt(String location){
         ArrayList<Animal> animalsAt = new ArrayList<>();
         for (Animal animal : this.animals) {
@@ -107,7 +109,6 @@ public class Zoo {
                 animalsAt.add(animal);
             }
         }
-
         return animalsAt;
     }
 
