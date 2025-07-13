@@ -21,19 +21,18 @@ public class ZooMain {
             if(zooOpenStatus){
                 if(!zoo.getVisitorLoggedIn()){
                     TicketingModule.main(args);
-                    System.out.println("/n For user security, please present your ticket number.");
+                    System.out.println("\nFor user security, please present your ticket number.");
                     System.out.print("Enter your ticket number (e.g. ZOO-1234): ");
                     userChoice = userIn.nextLine();
-                    if(validateTicket(zoo,userChoice)){
-                        System.out.printf("Welcome %s!",zoo.getUserInfoArray().get(2));
-                        ZooModule zooStart = new ZooModule(zoo);
-                        zooStart.startZooModule();
-                    }else{
+                    if(!validateTicket(zoo,userChoice)){
                         System.out.println("Incorrect or lost ticket, please purchase another.");
-                        TicketingModule.main(args);
                     }
+                    else
+                        zoo.setVisitorLoggedIn(true);
                 }else{
                     System.out.println("Welcome Back, "+zoo.getUserInfoArray().get(2)+"!");
+                    ZooModule zooStart = new ZooModule(zoo);
+                    zooStart.startZooModule();
                 }
             }else{
                 System.out.println("Sorry, the zoo has closed. ❌");
