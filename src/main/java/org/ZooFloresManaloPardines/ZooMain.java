@@ -16,6 +16,9 @@ public class ZooMain {
             switch (choice){
                 case "1":
                     System.out.println("Shared Zoo Logged In: "+zoo.getUserTicket());
+                    //paolo change
+                    ZooModule zooApp = new ZooModule(SharedZoo.zoo);
+                    zooApp.startZooModule();
                     break;
                 default:
                     exitCondition = true;

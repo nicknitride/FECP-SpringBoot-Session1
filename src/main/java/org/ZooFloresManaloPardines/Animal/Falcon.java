@@ -3,9 +3,8 @@ package org.ZooFloresManaloPardines.Animal;
 import org.ZooFloresManaloPardines.Building.Building;
 
 public class Falcon extends Bird {
-    Falcon(String name, Building location){
-        this.name = name;
-        this.location = location;
+    public Falcon(String name, Building location){
+        super(name, location);
     }
     @Override
     public void makeSound() {
