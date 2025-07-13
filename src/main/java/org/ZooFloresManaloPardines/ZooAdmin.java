@@ -227,19 +227,19 @@ public class ZooAdmin {
         System.out.print("Enter Bird Enclosure Handler's name: ");
         handlerName = sc.nextLine();
         zoo.addHandlerToZoo(new Handler(handlerName,zoo.birdEnclosure));
-//        System.out.print("Enter Veterinarian's name: ");
-//        handlerName = sc.nextLine();
-//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.hospitalBuilding));
-//        System.out.print("Enter Vendor for Ticket Shop's name: ");
-//        handlerName = sc.nextLine();
-//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.ticketBooth));
-//        System.out.print("Enter Food Vendor's name: ");
-//        handlerName = sc.nextLine();
-//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.restaurant));
-//        System.out.print("Enter Vendor for Gift Shop's name: ");
-//        handlerName = sc.nextLine();
-//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.giftShop));
-//        System.out.println("=== ✅ Completed Zoo Staff Setup ===");
+        System.out.print("Enter Veterinarian's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.hospitalBuilding));
+        System.out.print("Enter Vendor for Ticket Shop's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.ticketBooth));
+        System.out.print("Enter Food Vendor's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.restaurant));
+        System.out.print("Enter Vendor for Gift Shop's name: ");
+        handlerName = sc.nextLine();
+        zoo.addHandlerToZoo(new Handler(handlerName,zoo.giftShop));
+        System.out.println("=== ✅ Completed Zoo Staff Setup ===");
     }
     public static void main(String[] args) {
         boolean exitCondition = false;

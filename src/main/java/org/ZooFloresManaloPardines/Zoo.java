@@ -15,6 +15,9 @@ public class Zoo {
     private ArrayList<People> people;
     private ArrayList<Animal> animals;
 
+    public List<Animal> healedAnimalsLog;
+    public List<Animal> animalsInHospital;
+
 
     //TicketingModule Shared Data
     private boolean visitorLoggedIn = false;
@@ -33,6 +36,8 @@ public class Zoo {
     public Zoo(){
         this.people = new ArrayList<>();
         this.animals = new ArrayList<>();
+        this.healedAnimalsLog = new ArrayList<>();
+        this.animalsInHospital = new ArrayList<>();
         this.shopInventory = new ArrayList<>();
         this.admin = new Manager("Nick", new Drinks(003, "coke", 20.00),"admin123");
         pachydermEnclosure =  new PachydermEnclosure("Pachyderm (Elephant)");

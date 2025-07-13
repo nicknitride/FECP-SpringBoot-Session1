@@ -2,7 +2,10 @@ package org.ZooFloresManaloPardines;
 
 import org.ZooFloresManaloPardines.Animal.*;
 import org.ZooFloresManaloPardines.Building.*;
+import org.ZooFloresManaloPardines.People.Handler;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,12 +29,21 @@ public class ZooModule {
         //init representative animals from the zooData object
         if(zooData.pachydermEnclosure != null && !zooData.pachydermEnclosure.getAnimals().isEmpty()){
             this.representativePachyderm = zooData.pachydermEnclosure.getAnimals().getFirst();
+        }else{
+            this.representativePachyderm = zooData.pachydermEnclosure.getAnimals().getLast();
         }
+
         if(zooData.felineEnclosure != null && !zooData.felineEnclosure.getAnimals().isEmpty()){
             this.representativeFeline = zooData.felineEnclosure.getAnimals().getFirst();
+        }else{
+            this.representativeFeline = zooData.felineEnclosure.getAnimals().getLast();
         }
+
+
         if(zooData.birdEnclosure != null && !zooData.birdEnclosure.getAnimals().isEmpty()){
             this.representativeBird = zooData.birdEnclosure.getAnimals().getFirst();
+        }else{
+            this.representativeBird = zooData.birdEnclosure.getAnimals().getLast();
         }
     }
 
@@ -51,7 +63,7 @@ public class ZooModule {
                     visitShop();
                     break;
                 case 3:
-                    visitVetereniarian();
+                    visitVet();
                     break;
                 case 4:
                     System.out.println("Thank you for visiting!");
@@ -174,5 +186,91 @@ public class ZooModule {
             System.out.println("Choose an option: ");
         }
     }
-    private void visitVetereniarian(){}
+    private void visitVet(){
+        //display menu
+        //if view sick animals, then getanimals currently in hospital (ishealthy=false?)
+        //if view healed animals, then display healedanimals list with timestamps
+        //if attend science lecture, print handler + string statement
+        //if heal animals, then iterate through animals in hospital and return to their corresponding enclosure
+        //if 5 then exit
+
+        boolean inVetHospital = true;
+
+        String vetName = "Dr. Vet";
+        if (zooData.getHandlerArrayList() != null && !zooData.getHandlerArrayList().isEmpty()) {
+            for (Handler handler : zooData.getHandlerArrayList()) {
+                if (handler.getLocation() != null && handler.getLocation().equals(zooData.hospitalBuilding)) {
+                    vetName = handler.getName();
+                    break;
+                }
+            }
+        }
+
+        while(inVetHospital){
+            System.out.println("\n===Zoo Visitor Hospital Monitor==="); // Matches sample
+            System.out.println("1. View Sick Animals");
+            System.out.println("2. View Healed Animals");
+            System.out.println("3. Attend Science Lecture");
+            System.out.println("4. Heal Animals (Veterinarian)"); // Matches sample
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = getUserChoice();
+            switch(choice){
+                case 1:
+                    System.out.println("===Sick Animals Currently in Hospital===");
+                    if(zooData.getAnimalsAt("Hospital").isEmpty()){
+                        System.out.println("No sick animals in the hospital. All are healthy/discharged.");
+                    }else{
+                        for(Animal animal : zooData.getAnimalsAt("Hospital")){
+                            System.out.println("- " + animal.name);
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("===Healed Animals with Timestamps: ===");
+                    if(zooData.healedAnimalsLog.isEmpty()){
+                        System.out.println("No animals have been healed yet.");
+                    }else{
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        for(Animal animal : zooData.healedAnimalsLog){
+                            System.out.println("- " + animal.name + "/ (" + LocalDateTime.now().format(formatter) + ")");
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("\n" + vetName +" gives a science lecture on an animal health and conservation");
+                    break;
+                case 4:
+                    System.out.println("\n" + vetName + " begins healing sick animals...");
+                    //List<Animal> animalsInHospital = zooData.getAnimalsAt("Hospital");
+                    if(zooData.getAnimalsAt("Hospital").isEmpty()){
+                        System.out.println("No sick animals in the hospital. All are healthy/discharged.");
+                        break;
+                    }else{
+                        for(Animal animal : zooData.getAnimalsAt("Hospital")){
+                            animal.isHealthy = true;
+                            zooData.healedAnimalsLog.add(animal);
+                            //animalsInHospital.remove(animal);
+                            if(animal instanceof Pachyderm){
+                                animal.setLocation(zooData.pachydermEnclosure);
+                            }else if(animal instanceof Bird){
+                                animal.setLocation(zooData.birdEnclosure);
+                            }else if(animal instanceof Feline){
+                                animal.setLocation(zooData.felineEnclosure);
+                            }
+                            System.out.println("Healed: " + animal.name);
+                            System.out.println(animal.name + " has been discharged and returned to their enclosure");
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Exiting Zoo Vet Hospital. Goodbye!"); // Matches sample
+                    inVetHospital = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Enter number 1-5");
+            }
+        }
+    }
 }
