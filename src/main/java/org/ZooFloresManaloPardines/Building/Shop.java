@@ -3,8 +3,9 @@ package org.ZooFloresManaloPardines.Building;
 public abstract class Shop extends Building{
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Shop";
+    }
     private int id;
     private String productName;
     private double price;
@@ -26,8 +27,8 @@ public abstract class Shop extends Building{
     public double getPrice() {
         return price;
     }
-    @Override
-    public String toString(){
-        return id + ". " + productName + " - ₱" + String.format("%.0f", price);
-    }
+//    @Override
+//    public String toString(){
+//        return id + ". " + productName + " - ₱" + String.format("%.0f", price);
+//    }
 }
