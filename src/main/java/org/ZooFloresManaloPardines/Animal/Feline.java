@@ -5,7 +5,7 @@ import org.ZooFloresManaloPardines.Building.Building;
 public abstract class Feline extends Animal {
     public Building location;
 
-    public Feline(String name) {
+    public Feline(String name, Building location) {
         super(name);
     }
 

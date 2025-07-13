@@ -5,6 +5,7 @@ import org.ZooFloresManaloPardines.Building.Building;
 public class Cheetah extends Feline{
     public Cheetah(String name, Building location){
         super(name, location);
+        this.location = location;
     }
     @Override
     public void makeSound() {
