@@ -27,8 +27,8 @@ public abstract class Shop extends Building{
     public double getPrice() {
         return price;
     }
-//    @Override
-//    public String toString(){
-//        return id + ". " + productName + " - ₱" + String.format("%.0f", price);
-//    }
+
+    public String toStringShop(){
+        return id + ". " + productName + " - ₱" + String.format("%.0f", price);
+    }
 }

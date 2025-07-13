@@ -128,7 +128,7 @@ public class ZooModule {
                 continue;
             }
             for(Shop product: zooData.shopInventory){
-                System.out.println(product.toString());
+                System.out.println(product.toStringShop());
             }
             System.out.println("0. To proceed to checkout/exit.");
             System.out.print("Enter the numbers of the items you want to buy: ");
