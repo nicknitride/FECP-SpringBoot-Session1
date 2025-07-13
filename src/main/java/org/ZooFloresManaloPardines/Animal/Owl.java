@@ -3,9 +3,8 @@ package org.ZooFloresManaloPardines.Animal;
 import org.ZooFloresManaloPardines.Building.Building;
 
 public class Owl extends Bird {
-    Owl(String name, Building location){
-        this.name = name;
-        this.location = location;
+    public Owl(String name, Building location){
+        super(name, location);
     }
     @Override
     public void makeSound() {

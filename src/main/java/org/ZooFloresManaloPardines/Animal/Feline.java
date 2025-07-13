@@ -4,6 +4,11 @@ import org.ZooFloresManaloPardines.Building.Building;
 
 public abstract class Feline extends Animal {
     public Building location;
+
+    public Feline(String name, Building location) {
+        super(name);
+    }
+
     public Building getLocation(){
         System.out.println("Print <Location> here once method in Building is defined");
         return location;

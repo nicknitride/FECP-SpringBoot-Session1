@@ -3,9 +3,8 @@ package org.ZooFloresManaloPardines.Animal;
 import org.ZooFloresManaloPardines.Building.Building;
 
 public class Tiger extends Feline{
-    Tiger(String name, Building location){
-        this.name = name;
-        this.location = location;
+    public Tiger(String name, Building location){
+        super(name, location);
     }
     @Override
     public void makeSound() {
