@@ -47,23 +47,23 @@ public class Zoo {
         Elephant dumbo = new Elephant("Dumbo", pachydermEnclosure);
         Rhino rhinoMan = new Rhino("Rhino Man", pachydermEnclosure);
         Hippo harry = new Hippo("Harry", pachydermEnclosure);
-        pachydermEnclosure.addAnimal(dumbo);
-        pachydermEnclosure.addAnimal(rhinoMan);
-        pachydermEnclosure.addAnimal(harry);
+        animals.add(dumbo);
+        animals.add(rhinoMan);
+        animals.add(harry);
 
         Lion simba = new Lion("Simba", felineEnclosure);
         Tiger tigger = new Tiger("Tigger", felineEnclosure);
         Cheetah cheetah = new Cheetah("Cheetah", felineEnclosure);
-        felineEnclosure.addAnimal(simba);
-        felineEnclosure.addAnimal(tigger);
-        felineEnclosure.addAnimal(cheetah);
+        animals.add(simba);
+        animals.add(tigger);
+        animals.add(cheetah);
 
         Owl hedwig = new Owl("Hedwig", birdEnclosure);
         Parrot parrotMan = new Parrot("Parrot Man", birdEnclosure);
         Falcon marvinBeak = new Falcon("Flyer", birdEnclosure);
-        birdEnclosure.addAnimal(hedwig);
-        birdEnclosure.addAnimal(parrotMan);
-        birdEnclosure.addAnimal(marvinBeak);
+        animals.add(hedwig);
+        animals.add(parrotMan);
+        animals.add(marvinBeak);
 
         this.shopInventory = new ArrayList<>();
         shopInventory.add(new Drinks(1, "Soft Drink", 30.00));

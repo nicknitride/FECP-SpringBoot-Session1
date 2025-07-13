@@ -16,7 +16,7 @@ public abstract class Bird extends Animal {
 
     @Override
     public Building getLocation(){
-        System.out.println("Print <Location> here once method in Building is defined");
+//        System.out.println("Print <Location> here once method in Building is defined");
         return location;
     }
     public String getName(){

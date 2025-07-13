@@ -1,6 +1,7 @@
 package org.ZooFloresManaloPardines;
 
 
+import org.ZooFloresManaloPardines.Animal.Animal;
 import org.ZooFloresManaloPardines.Building.PachydermEnclosure;
 import org.ZooFloresManaloPardines.People.Handler;
 import org.ZooFloresManaloPardines.People.Manager;
@@ -35,37 +36,58 @@ public class ZooAdmin {
         System.out.println("4. Close Zoo to Visitors");
         System.out.println("5. Exit");
     }
-    public static void zooHandler(Zoo zoo){
+    public static void zooHandler(Zoo zoo) {
         ArrayList<Handler> handlerArray = zoo.getHandlerArrayList();
         ArrayList<String> acceptableStrings = new ArrayList<>();
+        ArrayList<String> enclosuresOfAcceptable = new ArrayList<>();
         ArrayList<String> enteredStrings = new ArrayList<>();
+
+        ArrayList<Animal> felineEnclosureAnimals = zoo.getAnimalsAt("FelineEnclosure");
+        ArrayList<Animal> pachydermEnclosureAnimals = zoo.getAnimalsAt("PachydermEnclosure");
+        ArrayList<Animal> birdEnclosureAnimals = zoo.getAnimalsAt("BirdEnclosure");
+        boolean innerExitCondition = false;
         Scanner sc = new Scanner(System.in);
-        for (int i=0; i<handlerArray.size(); i++){
+        for (int i = 0; i < handlerArray.size(); i++) {
             if (handlerArray.get(i).getLocation().toString().equals("PachydermEnclosure") ||
-            handlerArray.get(i).getLocation().toString().equals("FelineEnclosure") ||
+                    handlerArray.get(i).getLocation().toString().equals("FelineEnclosure") ||
                     handlerArray.get(i).getLocation().toString().equals("BirdEnclosure")
-            ){
-            acceptableStrings.add(handlerArray.get(i).getName());
+            ) {
+                acceptableStrings.add(handlerArray.get(i).getName());
+                enclosuresOfAcceptable.add(handlerArray.get(i).getLocation().toString());
+                System.out.println(handlerArray.get(i).getLocation().toString());
             }
         }
-        System.out.println("Handler list: "+acceptableStrings);
-        System.out.println("You've accessed: "+enteredStrings);
+        System.out.println("Handler list: " + acceptableStrings);
+        System.out.println("You've accessed: " + enteredStrings);
         System.out.println("Please set itinerary for all handlers to exit this menu.");
-        while(enteredStrings.size()!=acceptableStrings.size()){
+        while (enteredStrings.size()!= acceptableStrings.size()) {
             System.out.print("Enter your name (handler): ");
             String userInput = sc.nextLine();
-            if(acceptableStrings.contains(userInput)){
+            if (acceptableStrings.contains(userInput) && !enteredStrings.contains(userInput)) {
                 enteredStrings.add(userInput);
-            }else{
-                System.out.println("Error, handler does not exist.");
-                System.out.println("Handler list: "+acceptableStrings);
-                System.out.println("You've accessed: "+enteredStrings);
-                System.out.println("Please set itinerary for all handlers to exit this menu.");
+                System.out.println("---Handler Menu---");
+                System.out.printf("Welcome (%s)! \n", userInput);
+                System.out.println("---Animal Duty Menu---");
+                System.out.println("Animals assigned: ");
+                if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("PachydermEnclosure")) {
+                    for (int i = 0; i < pachydermEnclosureAnimals.size(); i++) {
+                        System.out.println((i + 1) + ". " + pachydermEnclosureAnimals.get(i).name);
+                    }
+                } else if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("FelineEnclosure")) {
+                    for (int i = 0; i < felineEnclosureAnimals.size(); i++) {
+                        System.out.println((i + 1) + ". " + felineEnclosureAnimals.get(i).name);
+                    }
+                } else if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("BirdEnclosure")) {
+                    for (int i = 0; i < birdEnclosureAnimals.size(); i++) {
+                        System.out.println((i + 1) + ". " + birdEnclosureAnimals.get(i).name);
+                    }
+                } else if(enteredStrings.contains(userInput)){
+                    System.out.printf("You've already set the itinerary for %s\n",userInput);
+                }
             }
+
+
         }
-
-
-
     }
     public static void zooStaffSetup(Scanner sc, Zoo zoo){
         String handlerName;
@@ -80,19 +102,19 @@ public class ZooAdmin {
         System.out.print("Enter Bird Enclosure Handler's name: ");
         handlerName = sc.nextLine();
         zoo.addHandlerToZoo(new Handler(handlerName,zoo.birdEnclosure));
-        System.out.print("Enter Veterinarian's name: ");
-        handlerName = sc.nextLine();
-        zoo.addHandlerToZoo(new Handler(handlerName,zoo.hospitalBuilding));
-        System.out.print("Enter Vendor for Ticket Shop's name: ");
-        handlerName = sc.nextLine();
-        zoo.addHandlerToZoo(new Handler(handlerName,zoo.ticketBooth));
-        System.out.print("Enter Food Vendor's name: ");
-        handlerName = sc.nextLine();
-        zoo.addHandlerToZoo(new Handler(handlerName,zoo.restaurant));
-        System.out.print("Enter Vendor for Gift Shop's name: ");
-        handlerName = sc.nextLine();
-        zoo.addHandlerToZoo(new Handler(handlerName,zoo.giftShop));
-        System.out.println("=== ✅ Completed Zoo Staff Setup ===");
+//        System.out.print("Enter Veterinarian's name: ");
+//        handlerName = sc.nextLine();
+//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.hospitalBuilding));
+//        System.out.print("Enter Vendor for Ticket Shop's name: ");
+//        handlerName = sc.nextLine();
+//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.ticketBooth));
+//        System.out.print("Enter Food Vendor's name: ");
+//        handlerName = sc.nextLine();
+//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.restaurant));
+//        System.out.print("Enter Vendor for Gift Shop's name: ");
+//        handlerName = sc.nextLine();
+//        zoo.addHandlerToZoo(new Handler(handlerName,zoo.giftShop));
+//        System.out.println("=== ✅ Completed Zoo Staff Setup ===");
     }
     public static void main(String[] args) {
         boolean exitCondition = false;
