@@ -13,6 +13,8 @@ public abstract class Pachyderm extends Animal {
     public void roam(){
         System.out.println("Pachyderm roam.");
     }
+
+    @Override
     public Building getLocation(){
         System.out.println("Print <Location> here once method in Building is defined");
         return location;

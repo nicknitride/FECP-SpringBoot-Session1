@@ -7,8 +7,10 @@ public abstract class Feline extends Animal {
 
     public Feline(String name, Building location) {
         super(name);
+        this.location = location;
     }
 
+    @Override
     public Building getLocation(){
         System.out.println("Print <Location> here once method in Building is defined");
         return location;

@@ -1,5 +1,7 @@
 package org.ZooFloresManaloPardines.Animal;
 
+import org.ZooFloresManaloPardines.Building.Building;
+
 public abstract class Animal {
     public String name;
     public boolean isHealthy;
@@ -17,4 +19,7 @@ public abstract class Animal {
     };
     public abstract void roam();
     public abstract void makeSound();
+
+    public abstract Building getLocation();
+
 }

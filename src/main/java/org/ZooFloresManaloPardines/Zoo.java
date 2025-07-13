@@ -1,7 +1,7 @@
 package org.ZooFloresManaloPardines;
 
 
-import org.ZooFloresManaloPardines.Animal.Animal;
+import org.ZooFloresManaloPardines.Animal.*;
 import org.ZooFloresManaloPardines.Building.*;
 import org.ZooFloresManaloPardines.Building.Tickets;
 import org.ZooFloresManaloPardines.People.Handler;
@@ -30,9 +30,9 @@ public class Zoo {
         this.people = new ArrayList<>();
         this.animals = new ArrayList<>();
         this.admin = new Manager("Nick", new Drinks(),"admin123");
-        pachydermEnclosure =  new PachydermEnclosure();
-        felineEnclosure =   new FelineEnclosure();
-        birdEnclosure = new BirdEnclosure();
+        pachydermEnclosure =  new PachydermEnclosure("LKASJDLASJD");
+        felineEnclosure =   new FelineEnclosure("AHKDJHAKJSD");
+        birdEnclosure = new BirdEnclosure("JAHDKJHASK");
         hospitalBuilding = new Hospital();
         giftShop = new Gifts();
         ticketBooth = new Tickets();
@@ -66,4 +66,16 @@ public class Zoo {
     public void addHandlerToZoo(Handler handler){
         handlerArrayList.add(handler);
     }
+
+    public ArrayList<Animal> getAnimalsAt(String location){
+        ArrayList<Animal> animalsAt = new ArrayList<>();
+        for (Animal animal : this.animals) {
+            if (animal.getLocation().toString().equals(location)) {
+                animalsAt.add(animal);
+            }
+        }
+
+        return animalsAt;
+    }
+
 }

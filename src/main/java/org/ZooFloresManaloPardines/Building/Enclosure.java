@@ -21,4 +21,9 @@ public abstract class Enclosure extends Building{
     public List<Animal> getAnimals(){
         return animals;
     }
+
+    @Override
+    public String toString(){
+        return "Enclosure";
+    }
 }
