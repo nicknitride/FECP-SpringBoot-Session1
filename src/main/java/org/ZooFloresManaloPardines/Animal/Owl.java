@@ -10,4 +10,8 @@ public class Owl extends Bird {
     public void makeSound() {
         System.out.println("Owl sound.");
     }
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }

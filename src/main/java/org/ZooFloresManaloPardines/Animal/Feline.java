@@ -15,6 +15,10 @@ public abstract class Feline extends Animal {
 //        System.out.println("Print <Location> here once method in Building is defined");
         return location;
     }
+
+    public void setLocation(Building location){
+        this.location = location;
+    }
     public void roam(){
         System.out.println("Feline roam.");
     }

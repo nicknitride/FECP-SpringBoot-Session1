@@ -11,4 +11,9 @@ public class Elephant extends Pachyderm{
     public void makeSound() {
         System.out.println("Elephant sound.");
     }
+
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }

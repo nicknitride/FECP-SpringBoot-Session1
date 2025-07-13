@@ -23,6 +23,9 @@ public abstract class Bird extends Animal {
         System.out.printf("Animal's name is %s",this.name);
         return this.name;
     }
+    public void setLocation(Building location){
+        this.location = location;
+    }
     public boolean getHealth(){
         return this.isHealthy;
     }

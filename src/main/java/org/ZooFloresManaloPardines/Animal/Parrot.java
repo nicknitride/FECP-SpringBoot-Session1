@@ -10,4 +10,8 @@ public class Parrot extends Bird {
     public void makeSound() {
         System.out.println("Parrot sound.");
     }
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }

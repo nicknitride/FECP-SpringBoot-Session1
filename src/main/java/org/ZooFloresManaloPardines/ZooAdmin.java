@@ -2,6 +2,7 @@ package org.ZooFloresManaloPardines;
 
 
 import org.ZooFloresManaloPardines.Animal.Animal;
+import org.ZooFloresManaloPardines.Animal.Pachyderm;
 import org.ZooFloresManaloPardines.Building.PachydermEnclosure;
 import org.ZooFloresManaloPardines.People.Handler;
 import org.ZooFloresManaloPardines.People.Manager;
@@ -57,10 +58,11 @@ public class ZooAdmin {
                 System.out.println(handlerArray.get(i).getLocation().toString());
             }
         }
-        System.out.println("Handler list: " + acceptableStrings);
-        System.out.println("You've accessed: " + enteredStrings);
-        System.out.println("Please set itinerary for all handlers to exit this menu.");
         while (enteredStrings.size()!= acceptableStrings.size()) {
+            System.out.println("-----------------");
+            System.out.println("Handler list: " + acceptableStrings);
+            System.out.println("You've accessed: " + enteredStrings);
+            System.out.println("Please set itinerary for all handlers to exit this menu.");
             System.out.print("Enter your name (handler): ");
             String userInput = sc.nextLine();
             if (acceptableStrings.contains(userInput) && !enteredStrings.contains(userInput)) {
@@ -70,16 +72,139 @@ public class ZooAdmin {
                 System.out.println("---Animal Duty Menu---");
                 System.out.println("Animals assigned: ");
                 if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("PachydermEnclosure")) {
-                    for (int i = 0; i < pachydermEnclosureAnimals.size(); i++) {
-                        System.out.println((i + 1) + ". " + pachydermEnclosureAnimals.get(i).name);
+                    innerExitCondition=false;
+                    while (!innerExitCondition){
+                        for (int i = 0; i < pachydermEnclosureAnimals.size(); i++) {
+                            System.out.println((i + 1) + ". " + pachydermEnclosureAnimals.get(i).name);
+                        }
+                        System.out.print("Choose animal number to interact with (0 to exit): ");
+                        int animalChoice = sc.nextInt();
+                        sc.nextLine();
+                        if(animalChoice==0){
+                            innerExitCondition=true;
+                        }else{
+                            Animal current = pachydermEnclosureAnimals.get(animalChoice-1);
+                            boolean animalCareTakerChoiceExit = false;
+                            while (!animalCareTakerChoiceExit){
+                                System.out.println("---Choose Action---");
+                                System.out.printf("1. Feed %s\n",current.name);
+                                System.out.printf("2. Exercise %s\n",current.name);
+                                System.out.printf("3. Examine %s\n",current.name);
+                                System.out.println("4. Exit");
+                                int actionChoice = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println("Action choice: "+actionChoice);
+                                switch (actionChoice){
+                                    case 1:
+                                        current.eat();
+                                        break;
+                                    case 2:
+                                        current.makeSound();
+                                        current.roam();
+                                        System.out.printf("%s has been exercised",current.name);
+                                        break;
+                                    case 3:
+                                        current.isHealthy = false;
+                                        current.setLocation(zoo.hospitalBuilding);
+                                        break;
+                                    case 4:
+                                        animalCareTakerChoiceExit = true;
+                                        break;
+                                }
+                            }
+                        }
+
+
                     }
                 } else if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("FelineEnclosure")) {
-                    for (int i = 0; i < felineEnclosureAnimals.size(); i++) {
-                        System.out.println((i + 1) + ". " + felineEnclosureAnimals.get(i).name);
+                    innerExitCondition=false;
+                    while (!innerExitCondition){
+                        for (int i = 0; i < felineEnclosureAnimals.size(); i++) {
+                            System.out.println((i + 1) + ". " + felineEnclosureAnimals.get(i).name);
+                        }
+                        System.out.print("Choose animal number to interact with (0 to exit): ");
+                        int animalChoice = sc.nextInt();
+                        sc.nextLine();
+                        if(animalChoice==0){
+                            innerExitCondition=true;
+                        }else{
+                            Animal current = felineEnclosureAnimals.get(animalChoice-1);
+                            boolean animalCareTakerChoiceExit = false;
+                            while (!animalCareTakerChoiceExit){
+                                System.out.println("---Choose Action---");
+                                System.out.printf("1. Feed %s\n",current.name);
+                                System.out.printf("2. Exercise %s\n",current.name);
+                                System.out.printf("3. Examine %s\n",current.name);
+                                System.out.println("4. Exit");
+                                int actionChoice = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println("Action choice: "+actionChoice);
+                                switch (actionChoice){
+                                    case 1:
+                                        current.eat();
+                                        break;
+                                    case 2:
+                                        current.makeSound();
+                                        current.roam();
+                                        System.out.printf("%s has been exercised",current.name);
+                                        break;
+                                    case 3:
+                                        current.isHealthy = false;
+                                        current.setLocation(zoo.hospitalBuilding);
+                                        break;
+                                    case 4:
+                                        animalCareTakerChoiceExit = true;
+                                        break;
+                                }
+                            }
+                        }
+
+
                     }
                 } else if (enclosuresOfAcceptable.get(acceptableStrings.indexOf(userInput)).equals("BirdEnclosure")) {
-                    for (int i = 0; i < birdEnclosureAnimals.size(); i++) {
-                        System.out.println((i + 1) + ". " + birdEnclosureAnimals.get(i).name);
+                    innerExitCondition=false;
+                    while (!innerExitCondition){
+                        for (int i = 0; i < birdEnclosureAnimals.size(); i++) {
+                            System.out.println((i + 1) + ". " + birdEnclosureAnimals.get(i).name);
+                        }
+                        System.out.print("Choose animal number to interact with (0 to exit): ");
+                        int animalChoice = sc.nextInt();
+                        sc.nextLine();
+                        if(animalChoice==0){
+                            innerExitCondition=true;
+                        }else{
+                            Animal current = birdEnclosureAnimals.get(animalChoice-1);
+                            boolean animalCareTakerChoiceExit = false;
+                            while (!animalCareTakerChoiceExit){
+                                System.out.println("---Choose Action---");
+                                System.out.printf("1. Feed %s\n",current.name);
+                                System.out.printf("2. Exercise %s\n",current.name);
+                                System.out.printf("3. Examine %s\n",current.name);
+                                System.out.println("4. Exit");
+                                int actionChoice = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println("Action choice: "+actionChoice);
+                                switch (actionChoice){
+                                    case 1:
+                                        current.eat();
+                                        break;
+                                    case 2:
+                                        current.makeSound();
+                                        current.roam();
+                                        System.out.printf("%s has been exercised",current.name);
+                                        break;
+                                    case 3:
+                                        current.isHealthy = false;
+                                        current.setLocation(zoo.hospitalBuilding);
+                                        break;
+                                    case 4:
+                                        animalCareTakerChoiceExit = true;
+                                        break;
+                                }
+                            }
+                        }
+
+
                     }
                 } else if(enteredStrings.contains(userInput)){
                     System.out.printf("You've already set the itinerary for %s\n",userInput);

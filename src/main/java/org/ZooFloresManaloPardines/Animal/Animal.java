@@ -10,7 +10,7 @@ public abstract class Animal {
         this.name = name;
         this.isHealthy = true;
     }
-
+    public abstract void setLocation(Building location);
     public void eat(){
         System.out.println(name + " is eating.");
     };

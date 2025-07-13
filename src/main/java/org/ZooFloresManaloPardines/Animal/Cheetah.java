@@ -11,4 +11,8 @@ public class Cheetah extends Feline{
     public void makeSound() {
         System.out.println("Cheetah sound.");
     }
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }

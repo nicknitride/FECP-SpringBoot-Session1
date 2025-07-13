@@ -10,4 +10,8 @@ public class Rhino extends Pachyderm{
     public void makeSound() {
         System.out.println("Rhino sound.");
     }
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }

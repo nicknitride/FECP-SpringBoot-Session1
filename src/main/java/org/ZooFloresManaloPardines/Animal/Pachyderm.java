@@ -19,6 +19,9 @@ public abstract class Pachyderm extends Animal {
 //        System.out.println("Print <Location> here once method in Building is defined");
         return location;
     }
+    public void setLocation(Building location){
+        this.location = location;
+    }
     public String getName(){
         System.out.printf("Animal's name is %s",this.name);
         return this.name;

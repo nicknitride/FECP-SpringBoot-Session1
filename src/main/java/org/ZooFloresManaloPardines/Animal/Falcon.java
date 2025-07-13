@@ -10,4 +10,8 @@ public class Falcon extends Bird {
     public void makeSound() {
         System.out.println("Falcon sound.");
     }
+    @Override
+    public void setLocation(Building location){
+        super.setLocation(location);
+    }
 }
