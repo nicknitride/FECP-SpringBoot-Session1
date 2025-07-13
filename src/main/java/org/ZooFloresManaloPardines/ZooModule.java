@@ -10,77 +10,30 @@ import java.util.Scanner;
 
 public class ZooModule {
     private Scanner sc;
-    //private List<Enclosure> enclosures;
     private Zoo zooData;
 
     private List<Shop> shopProducts;
 
     //representative animals for direct interaction in visitEnclosure()?
-    private Animal representativeLion;
-    private Animal representativeElephant;
-    private Animal representativeOwl;
+    private Animal representativeFeline;
+    private Animal representativePachyderm;
+    private Animal representativeBird;
 
     public ZooModule(Zoo zooData) {
         this.sc = new Scanner(System.in);
-        //this.enclosures = new ArrayList<>();
         this.zooData = zooData;
-        //this.shopProducts = new ArrayList<>();
-        //initializeZooData();
 
         //init representative animals from the zooData object
         if(zooData.pachydermEnclosure != null && !zooData.pachydermEnclosure.getAnimals().isEmpty()){
-            this.representativeElephant = zooData.pachydermEnclosure.getAnimals().getFirst();
+            this.representativePachyderm = zooData.pachydermEnclosure.getAnimals().getFirst();
         }
         if(zooData.felineEnclosure != null && !zooData.felineEnclosure.getAnimals().isEmpty()){
-            this.representativeLion = zooData.felineEnclosure.getAnimals().getFirst();
+            this.representativeFeline = zooData.felineEnclosure.getAnimals().getFirst();
         }
         if(zooData.birdEnclosure != null && !zooData.birdEnclosure.getAnimals().isEmpty()){
-            this.representativeOwl = zooData.birdEnclosure.getAnimals().getFirst();
+            this.representativeBird = zooData.birdEnclosure.getAnimals().getFirst();
         }
     }
-
-    /*
-    private void initializeZooData() {
-        //based from sample output
-        //init enclosures and animals
-        PachydermEnclosure pachydermEnclosure = new PachydermEnclosure("Pachyderm (Elephant)");
-        FelineEnclosure felineEnclosure = new FelineEnclosure("Feline (Lion)");
-        BirdEnclosure birdEnclosure = new BirdEnclosure("Bird (Owl)");
-        //pachyderm
-        Elephant dumbo = new Elephant("Dumbo", pachydermEnclosure);
-        Rhino horn = new Rhino("Horn", pachydermEnclosure);
-        Hippo harry = new Hippo("Harry", pachydermEnclosure);
-        pachydermEnclosure.addAnimal(dumbo);
-        pachydermEnclosure.addAnimal(horn);
-        pachydermEnclosure.addAnimal(harry);
-        this.representativeElephant = dumbo;
-        //feline
-        Lion simba = new Lion("Simba", felineEnclosure);
-        Tiger stripes = new Tiger("Stripes", felineEnclosure);
-        Cheetah speedy = new Cheetah("Speedy", felineEnclosure);
-        felineEnclosure.addAnimal(simba);
-        felineEnclosure.addAnimal(stripes);
-        felineEnclosure.addAnimal(speedy);
-        this.representativeLion = simba;
-        //bird
-        Owl hedwig = new Owl("Hedwig", birdEnclosure);
-        Parrot polly = new Parrot("Polly", birdEnclosure);
-        Falcon flyer = new Falcon("Flyer", birdEnclosure);
-        birdEnclosure.addAnimal(hedwig);
-        birdEnclosure.addAnimal(polly);
-        birdEnclosure.addAnimal(flyer);
-        this.representativeOwl = hedwig;
-
-        enclosures.add(pachydermEnclosure);
-        enclosures.add(felineEnclosure);
-        enclosures.add(birdEnclosure);
-
-        //init shop products
-        //shopProducts.add(new Drinks(1, "Soft Drink", 30.00));
-        //shopProducts.add(new Food(2, "Popcorn", 50.00));
-        //shopProducts.add(new Gifts(3, "Plush Toy", 120.00));
-        //shopProducts.add(new Gifts(4, "Keychain", 45.00));
-    } */
 
     public void startZooModule(){
         System.out.println("Welcome to the Zoo!");
@@ -137,22 +90,15 @@ public class ZooModule {
         System.out.println("3. " + zooData.birdEnclosure.name);
         System.out.print("Choose an option: ");
 
-        /*
-        for(int i=0;i<enclosures.size();i++){
-            System.out.println((i+1) + ". " + enclosures.get(i).name);
-        }
-        System.out.println("0. Back to Zoo Main Menu");
-        System.out.print("Choose an option: "); */
-
         int choice = getUserChoice();
         Animal animalToInteract = null;
 
         if(choice==1){
-            animalToInteract = representativeElephant;
+            animalToInteract = representativePachyderm;
         }else if(choice==2){
-            animalToInteract = representativeLion;
+            animalToInteract = representativeFeline;
         }else if(choice==3){
-            animalToInteract = representativeOwl;
+            animalToInteract = representativeBird;
         }
         if(animalToInteract != null){
             System.out.print("Would you like to feed " + animalToInteract.name + "? (yes/no): ");
@@ -161,7 +107,7 @@ public class ZooModule {
                 animalToInteract.eat();
                 animalToInteract.makeSound();
             }else if(feedResponse.equalsIgnoreCase("no")){
-                System.out.println(animalToInteract.name + "despises you for not feeding it.");
+                System.out.println(animalToInteract.name + " despises you for not feeding it.");
             }else{
                 System.out.println("Invalid input.");
             }
