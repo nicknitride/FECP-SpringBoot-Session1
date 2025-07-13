@@ -68,6 +68,7 @@ public class TicketingModule {
                     System.out.printf("Enjoy your visit, %s!\n",ticketOutput.get(2));
                     zoo.setVisitorLoggedIn(true);
                     zoo.setUserTicketNumber(ticketNumber);
+                    zoo.setUserInfoArray(ticketOutput);
                 }else{
                     System.out.println("Exiting.");
                 }
