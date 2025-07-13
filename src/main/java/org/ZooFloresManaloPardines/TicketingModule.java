@@ -7,7 +7,6 @@ public class TicketingModule {
     public static String generateTicket(){
         String randNum = Integer.toString((int)(Math.random()*12000));
         return String.format("ZOO-%s",randNum);
-
     }
     public static ArrayList<String> discountLogic(String name, int age){
         ArrayList<String> outputArray = new ArrayList<>();
