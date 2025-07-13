@@ -289,7 +289,7 @@ public class ZooAdmin {
                     default:
                         System.out.println("Exiting. Invalid input.");
                         exitCondition = true;
-            }
+                }
             }
         }else{
             System.out.println("Incorrect details entered.");
