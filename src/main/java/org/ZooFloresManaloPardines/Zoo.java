@@ -39,7 +39,7 @@ public class Zoo {
         this.healedAnimalsLog = new ArrayList<>();
         this.animalsInHospital = new ArrayList<>();
         this.shopInventory = new ArrayList<>();
-        this.admin = new Manager("Nick", new Drinks(003, "coke", 20.00),"admin123");
+        this.admin = new Manager("admin", new Drinks(003, "coke", 20.00),"admin");
         pachydermEnclosure =  new PachydermEnclosure("Pachyderm (Elephant)");
         felineEnclosure =   new FelineEnclosure("Feline (Lion)");
         birdEnclosure = new BirdEnclosure("Bird (Owl)");

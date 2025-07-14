@@ -147,7 +147,7 @@ public class ZooModule {
 
         boolean isShopping = true;
         while(isShopping){
-            System.out.println("Available Products");
+            System.out.println("Available Products ");
             if (zooData.shopInventory == null || zooData.shopInventory.isEmpty()){
                 System.out.println("No products available right now.");
                 isShopping = false;

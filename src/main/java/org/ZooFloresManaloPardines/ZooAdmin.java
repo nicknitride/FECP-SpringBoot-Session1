@@ -59,7 +59,7 @@ public class ZooAdmin {
             }
         }
         while (enteredStrings.size()!= acceptableStrings.size()) {
-            System.out.println("-----------------");
+            System.out.println("----------------- ");
             System.out.println("Handler list: " + acceptableStrings);
             System.out.println("You've accessed: " + enteredStrings);
             System.out.println("Please set itinerary for all handlers to exit this menu.");

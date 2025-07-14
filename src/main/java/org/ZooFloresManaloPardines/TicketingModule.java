@@ -61,7 +61,7 @@ public class TicketingModule {
                 System.out.print("Would you like to purchase the ticket? (y/n): ");
                 String purchaseDecision = userInput.nextLine().toLowerCase();
                 if(purchaseDecision.equals("y")){
-                    System.out.print("Generating ticket...");
+                    System.out.print("Generating ticket... ");
                     ticketNumber = generateTicket();
                     System.out.print("Generated ticket: ");
                     System.out.println(ticketNumber);
