@@ -4,6 +4,7 @@
 
 ## Demo Screenshots:
 ### Zoo Main (Try to Setup Handler Without Zoo Setup):
+Admin Credentials: <br>```username = admin``` <br> ```password = admin```
 ![img.png](img.png)
 ### Zoo Setup
 ![img_1.png](img_1.png)
